@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2020-10-29 20:12:29.179
+-- Last modification date: 2020-10-29 20:39:29.216
 
 -- tables
 -- Table: Alojamiento
@@ -36,7 +36,6 @@ CREATE TABLE Plan (
     nombre varchar(30) NOT NULL,
     descripcion varchar(100) NOT NULL,
     tipo char(1) NOT NULL,
-    estado int NOT NULL,
     Viaje_id int NOT NULL,
     CONSTRAINT Plan_pk PRIMARY KEY (id_plan)
 );
@@ -60,8 +59,9 @@ CREATE TABLE Usuario (
     id int NOT NULL,
     nombre varchar(30) NOT NULL,
     apellido varchar(30) NOT NULL,
-    email int NOT NULL,
+    email varchar(30) NOT NULL,
     documento int NOT NULL,
+    password varchar(10) NOT NULL,
     CONSTRAINT Usuario_pk PRIMARY KEY (id)
 );
 
