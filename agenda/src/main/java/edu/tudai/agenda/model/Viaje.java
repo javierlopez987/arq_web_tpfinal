@@ -1,10 +1,16 @@
 package edu.tudai.agenda.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -13,7 +19,7 @@ import lombok.Data;
 public class Viaje {
 	
 	@Id
-	private Long idViaje;
+	private Long id;
 	@Column
 	private String nombre;
 	@Column
@@ -24,7 +30,11 @@ public class Viaje {
 	private Date fin;
 	@Column
 	private String descripcion;
-	
-	private Plan plan;
+	@Transient
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Viaje_id")
+	private List<Plan> planes;
+	@Column(name = "Usuario_id")
+	private Long propietario;
 	
 }
