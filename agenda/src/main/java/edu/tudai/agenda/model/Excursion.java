@@ -13,14 +13,13 @@ import lombok.EqualsAndHashCode;
 @PrimaryKeyJoinColumn(name = "Plan_id_plan")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Alojamiento extends Plan {
-
+public class Excursion extends Plan {
 	@Column
-	private Date entrada;
+	private String origen;
 	@Column
-	private Date salida;
+	private String destino;
 	@Column
-	private String direccion;
+	private Date comienzo;
 	@Column
-	private String localidad;
+	private Date finalizacion;
 }

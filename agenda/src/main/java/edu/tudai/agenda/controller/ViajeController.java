@@ -52,6 +52,12 @@ public class ViajeController {
 		repository.deleteById(id);
 	}
 	
+	@GetMapping("/{id}")
+	public Viaje getViaje(@PathVariable Long id) {
+		return repository.getOne(id);
+	}
+	
+	
 	/*
 	 * SECCION SERVICIOS ESPECIALES
 	 */

@@ -1,6 +1,5 @@
 package edu.tudai.agenda.model;
 
-import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,14 +12,10 @@ import lombok.EqualsAndHashCode;
 @PrimaryKeyJoinColumn(name = "Plan_id_plan")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Alojamiento extends Plan {
+public class Compuesto extends Plan {
+	@Column
+	private Plan plan1;
+	@Column
+	private Plan plan2;
 
-	@Column
-	private Date entrada;
-	@Column
-	private Date salida;
-	@Column
-	private String direccion;
-	@Column
-	private String localidad;
 }
