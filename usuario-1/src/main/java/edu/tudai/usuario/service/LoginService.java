@@ -21,9 +21,9 @@ public class LoginService {
 	}
 
 	// Servicio que requiere la autoridad de LINK
-	@PreAuthorize("hasAuthority('LINK')")
-	@GetMapping("/oldman")
-	public String oldman() {
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+	@GetMapping("/admin")
+	public String logAdmin() {
 		return "It's dangerous to go alone! Take this. Login info: " + SecurityContextHolder.getContext();
 	}
 }

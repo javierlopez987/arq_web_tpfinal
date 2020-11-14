@@ -19,8 +19,13 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	 @Query("SELECT u FROM Usuario u where u.documento = :documento")
 	    public List<Usuario> findAllByDocumento(int documento);
 	 
+	 /**
+	  * Se utiliza desde el Controller para verificar usuario
+	  * @param email
+	  * @return
+	  */
 	 @Query("SELECT u FROM Usuario u where u.email = :email")
-	    public List<Usuario> findAllByEmail(String email);
+	    public Usuario findByEmail(String email);
 
 	 @Query("SELECT u FROM Usuario u where u.id = :id and u.password = :password")
 	 public boolean userAutentication(Long id, String password);
