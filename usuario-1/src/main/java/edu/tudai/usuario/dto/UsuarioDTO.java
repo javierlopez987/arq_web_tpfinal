@@ -10,6 +10,7 @@ import lombok.Data;
 @Data
 public class UsuarioDTO {
 	
+	private Long id;
 	private String nombre;
 	private String apellido;
 	private String email;
@@ -17,6 +18,7 @@ public class UsuarioDTO {
 	private String token;
 	
 	public UsuarioDTO(Usuario user) {
+		this.id = user.getId();
 		this.nombre = user.getNombre();
 		this.apellido = user.getApellido();
 		this.email = user.getEmail();
