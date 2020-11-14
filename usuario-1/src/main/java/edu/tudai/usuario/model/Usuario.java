@@ -19,12 +19,12 @@ public class Usuario {
 	private String nombre;
 	@Column
 	private String apellido;
-	@Column
+	@Column(unique = true, nullable = false)
 	private String email;
 	@Column
 	private int documento;
 	@Column
 	private String password;
-	@Transient
-	private String token;
+	@Column
+	private int rol;
 }
