@@ -15,9 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.tudai.agenda.model.Viaje;
 import edu.tudai.agenda.repository.ViajeRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("viajes")
+@Api(value = "ViajeController", description = "REST API Viajes")
 public class ViajeController {
 	
 	@Autowired
@@ -43,13 +48,19 @@ public class ViajeController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteCliente(@PathVariable Long id) {
+	public void deleteViaje(@PathVariable Long id) {
 		repository.deleteById(id);
 	}
 	
 	/*
 	 * SECCION SERVICIOS ESPECIALES
 	 */
+	@ApiOperation(value = "Obtiene una lista de viajes futuros de un determinado usuario", response = Iterable.class, tags = "Proximos Viajes")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Lista de viajes futuros agendados"),
+			@ApiResponse(code = 401, message = "No autorizado para acceder al recurso"),
+			@ApiResponse(code = 403, message = "Recurso prohibido"),
+			@ApiResponse(code = 404, message = "No posee viajes futuros agendados")})
 	@GetMapping("proximos/usuario/{id}")
 	public Iterable<Viaje> getViajesProximos(@PathVariable Long id) {
 		

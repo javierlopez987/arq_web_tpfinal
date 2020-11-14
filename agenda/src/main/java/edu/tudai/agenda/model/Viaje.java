@@ -12,6 +12,7 @@ import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Entity
@@ -24,9 +25,11 @@ public class Viaje {
 	private String nombre;
 	@Column
 	private String destino;
-	@Column
+	@ApiModelProperty(value = "Fecha de inicio del viaje", required = true)
+	@Column(nullable = false)
 	private Date inicio;
-	@Column
+	@ApiModelProperty(value = "Fecha de finalización del viaje", required = true)
+	@Column(nullable = false)
 	private Date fin;
 	@Column
 	private String descripcion;
