@@ -19,6 +19,7 @@ import io.swagger.annotations.Api;
 @Api(value = "TransporteController", description = "REST API Transporte")
 public class TransporteController {
 	
+	@Autowired
 	private final TransporteRepository repository;
 	
 	public TransporteController(TransporteRepository repository) {
