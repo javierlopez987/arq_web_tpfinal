@@ -61,7 +61,7 @@ public class ViajeController {
 	/*
 	 * SECCION SERVICIOS ESPECIALES
 	 */
-	@ApiOperation(value = "Obtiene una lista de viajes futuros de un determinado usuario", response = Iterable.class, tags = "Proximos Viajes")
+	@ApiOperation(value = "Obtiene una lista de viajes futuros de un determinado usuario", response = Iterable.class, tags = "Reportes de Viajes")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Lista de viajes futuros agendados"),
 			@ApiResponse(code = 401, message = "No autorizado para acceder al recurso"),
@@ -73,6 +73,7 @@ public class ViajeController {
 		return repository.findByUserGteDate(id, Date.valueOf(LocalDate.now()));
 	}
 	
+	@ApiOperation(value = "Obtiene una lista de viajes realizados de un determinado usuario", response = Iterable.class, tags = "Reportes de Viajes")
 	@GetMapping("realizados/usuario/{id}")
 	public Iterable<Viaje> getViajesRealizados(@PathVariable Long id) {
 		

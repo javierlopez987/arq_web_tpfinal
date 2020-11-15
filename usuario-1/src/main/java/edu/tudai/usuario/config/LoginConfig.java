@@ -22,7 +22,7 @@ public class LoginConfig extends WebSecurityConfigurerAdapter{
 			.authorizeRequests()
 			.antMatchers(HttpMethod.GET, "/greetings").permitAll()
 			.antMatchers(HttpMethod.POST, "/user").permitAll()
-			//.antMatchers(HttpMethod.GET, "/oldman").hasAuthority("LINK") // Esta línea es otra manera de agregar requerimientos de logeo.
+			//.antMatchers(HttpMethod.GET, "/admin").hasAuthority("ROLE_ADMIN") // Esta línea es otra manera de agregar requerimientos de logeo.
 			.anyRequest().authenticated();
 	}
 }
