@@ -14,6 +14,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Excursion extends Plan {
+	
 	@Column
 	private String origen;
 	@Column

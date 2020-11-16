@@ -13,6 +13,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Transporte extends Plan {
+	
 	@Column
 	private String empresa;
 	@Column
