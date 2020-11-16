@@ -2,6 +2,7 @@ package edu.tudai.agenda.controller;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -53,8 +54,8 @@ public class ViajeController {
 	}
 	
 	@GetMapping("/{id}")
-	public Viaje getViaje(@PathVariable Long id) {
-		return repository.getOne(id);
+	public Optional<Viaje> getViaje(@PathVariable Long id) {
+		return repository.findById(id);
 	}
 	
 	

@@ -1,5 +1,7 @@
 package edu.tudai.agenda.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,8 +55,8 @@ public class ExcursionController {
 	}
 	
 	@GetMapping("/{id}")
-	public Excursion getExcursion(@PathVariable Long id) {
-		return repository.getOne(id);
+	public Optional<Excursion> getExcursion(@PathVariable Long id) {
+		return repository.findById(id);
 	}
 	
 	/*

@@ -17,10 +17,10 @@ public class Transporte extends Plan {
 	private String empresa;
 	@Column
 	private int nro;
+	@Column 
+	private String estacion_origen;
 	@Column
-	private String terminalOrig;
-	@Column
-	private String terminalDest;
+	private String estacion_destino;
 	@Column
 	private String origen;
 	@Column
