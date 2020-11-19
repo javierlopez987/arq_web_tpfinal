@@ -1,7 +1,5 @@
 package edu.tudai.agenda.controller;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.tudai.agenda.model.Viaje;
 import edu.tudai.agenda.repository.ViajeRepository;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("viajes")
-@Api(value = "ViajeController", description = "REST API Viajes")
+@Api(value = "Viajes", description = "REST SERVICE Viajes")
 public class ViajeController {
 	
 	@Autowired
@@ -57,5 +52,4 @@ public class ViajeController {
 	public Optional<Viaje> getViaje(@PathVariable Long id) {
 		return repository.findById(id);
 	}
-	
 }

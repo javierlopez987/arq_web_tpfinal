@@ -1,5 +1,7 @@
 package edu.tudai.agenda.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +18,7 @@ import io.swagger.annotations.Api;
 
 @RestController
 @RequestMapping("transportes")
-@Api(value = "TransporteController", description = "REST API Transporte")
+@Api(value = "Transportes", description = "REST SERVICE Transportes")
 public class TransporteController {
 	
 	@Autowired
@@ -47,8 +49,8 @@ public class TransporteController {
 	}
 	
 	@GetMapping("/{id}")
-	public void getTransporte(@PathVariable Long id) {
-		repository.getOne(id);
+	public Optional<Transporte> getTransporte(@PathVariable Long id) {
+		return repository.findById(id);
 	}
 	
 	
