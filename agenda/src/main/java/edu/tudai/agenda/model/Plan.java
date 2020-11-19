@@ -8,13 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
-@Entity(name = "Plan")
+@Entity
+@Table(name = "Plan")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Data
 public abstract class Plan {
