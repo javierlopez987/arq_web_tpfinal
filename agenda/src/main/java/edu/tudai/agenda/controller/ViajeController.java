@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("viajes")
-@Api(value = "ViajeController", description = "REST API Viajes")
+@Api(value = "Viajes", description = "REST SERVICE Viajes")
 public class ViajeController {
 	
 	@Autowired
@@ -57,26 +57,5 @@ public class ViajeController {
 	public Optional<Viaje> getViaje(@PathVariable Long id) {
 		return repository.findById(id);
 	}
-	
-	
-	/*
-	 * SECCION SERVICIOS ESPECIALES
-	 */
-	@ApiOperation(value = "Obtiene una lista de viajes futuros de un determinado usuario", response = Iterable.class, tags = "Proximos Viajes")
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Lista de viajes futuros agendados"),
-			@ApiResponse(code = 401, message = "No autorizado para acceder al recurso"),
-			@ApiResponse(code = 403, message = "Recurso prohibido"),
-			@ApiResponse(code = 404, message = "No posee viajes futuros agendados")})
-	@GetMapping("proximos/usuario/{id}")
-	public Iterable<Viaje> getViajesProximos(@PathVariable Long id) {
-		
-		return repository.findByUserGteDate(id, Date.valueOf(LocalDate.now()));
-	}
-	
-	@GetMapping("realizados/usuario/{id}")
-	public Iterable<Viaje> getViajesRealizados(@PathVariable Long id) {
-		
-		return repository.findByUserLtDate(id, Date.valueOf(LocalDate.now()));
-	}
+
 }
