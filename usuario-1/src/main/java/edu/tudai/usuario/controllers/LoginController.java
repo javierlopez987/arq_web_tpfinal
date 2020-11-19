@@ -37,7 +37,7 @@ public class LoginController {
 		if(user != null) {
 			userInfo = new UsuarioDTO(user);
 			if(pwd.equals(user.getPassword())) {
-				String token = getJWTToken(user.getEmail(), user.getRol());				
+				String token = getJWTToken(user);				
 				userInfo.setToken(token);
 			}
 		}
@@ -46,10 +46,10 @@ public class LoginController {
 	}
 
 	// Genero el token.
-	private String getJWTToken(String username, int rol) {
+	private String getJWTToken(Usuario user) {
 		String secretKey = "mySecretKey";
 		String roles;
-		switch (rol) {
+		switch (user.getRol()) {
 		case 1:
 			roles = "ROLE_ADMIN";
 			break;
@@ -60,7 +60,7 @@ public class LoginController {
 		
 		List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
 
-		String token = Jwts.builder().setId("arq_web").setSubject(username)
+		String token = Jwts.builder().setId(Long.toString(user.getId())).setSubject(user.getEmail())
 				.claim("authorities",
 						grantedAuthorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
 				.setIssuedAt(new Date(System.currentTimeMillis()))
