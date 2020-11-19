@@ -1,7 +1,7 @@
 package edu.tudai.agenda.controller;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,13 +37,13 @@ public class ReporteController {
 	@GetMapping("proximos/usuario/{id}")
 	public Iterable<Viaje> getViajesProximos(@PathVariable Long id) {
 		
-		return repository.findByUserGteDate(id, Date.valueOf(LocalDate.now()));
+		return repository.findByUserGteDate(id, Timestamp.valueOf(LocalDateTime.now()));
 	}
 	
 	@ApiOperation(value = "Obtiene una lista de viajes realizados de un determinado usuario", response = Iterable.class, tags = "Reportes")
 	@GetMapping("realizados/usuario/{id}")
 	public Iterable<Viaje> getViajesRealizados(@PathVariable Long id) {
 		
-		return repository.findByUserLtDate(id, Date.valueOf(LocalDate.now()));
+		return repository.findByUserLtDate(id, Timestamp.valueOf(LocalDateTime.now()));
 	}
 }
