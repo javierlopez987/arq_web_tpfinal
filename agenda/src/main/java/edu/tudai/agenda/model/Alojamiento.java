@@ -14,11 +14,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Alojamiento extends Plan {
-
-	@Column
-	private Date entrada;
-	@Column
-	private Date salida;
 	@Column
 	private String direccion;
 	@Column

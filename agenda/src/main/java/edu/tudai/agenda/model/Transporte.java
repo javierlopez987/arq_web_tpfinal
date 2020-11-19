@@ -25,8 +25,4 @@ public class Transporte extends Plan {
 	private String origen;
 	@Column
 	private String destino;
-	@Column
-	private Date salida;
-	@Column
-	private Date llegada;
 }

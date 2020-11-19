@@ -19,7 +19,5 @@ public class Excursion extends Plan {
 	@Column
 	private String destino;
 	@Column
-	private Date comienzo;
-	@Column
-	private Date finalizacion;
+	private String localidad;
 }

@@ -1,5 +1,7 @@
 package edu.tudai.agenda.model;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -23,9 +25,15 @@ public abstract class Plan {
 	@Column
 	private String nombre;
 	@Column
+	private String empresa;
+	@Column
 	private String descripcion;
 	@Column
 	private char tipo;
+	@Column
+	private Timestamp inicio;
+	@Column
+	private Timestamp fin;
 	@Transient
 	@JsonIgnore
 	@ManyToOne

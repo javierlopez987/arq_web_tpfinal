@@ -1,6 +1,7 @@
 package edu.tudai.agenda.model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -27,10 +28,10 @@ public class Viaje {
 	private String destino;
 	@ApiModelProperty(value = "Fecha de inicio del viaje", required = true)
 	@Column(nullable = false)
-	private Date inicio;
+	private Timestamp inicio;
 	@ApiModelProperty(value = "Fecha de finalización del viaje", required = true)
 	@Column(nullable = false)
-	private Date fin;
+	private Timestamp fin;
 	@Column
 	private String descripcion;
 	@Transient
