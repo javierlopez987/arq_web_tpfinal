@@ -1,6 +1,5 @@
 package edu.tudai.agenda.model;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -16,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-@Entity
+@Entity(name = "Viaje")
 @Data
 public class Viaje {
 	

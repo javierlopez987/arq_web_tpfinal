@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
-@Entity
+@Entity(name = "Plan")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Data
 public abstract class Plan {
