@@ -18,7 +18,7 @@ import io.swagger.annotations.Api;
 
 @RestController
 @RequestMapping("transportes")
-@Api(value = "TransporteController", description = "REST API Transporte")
+@Api(value = "Transportes", description = "REST SERVICE Transportes")
 public class TransporteController {
 	
 	@Autowired
