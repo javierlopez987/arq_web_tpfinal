@@ -22,7 +22,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/webjars/**",
             // otros endpoints publicos
             "/greetings",
-            "/index.html"
+            "/index.html",
+            "/*.html",
+            "/css/**",
+            "/js/**"
     };
 
 	@Override
