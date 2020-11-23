@@ -1,0 +1,35 @@
+body{
+    background-image: url(../image/Viajes.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+}
+h1, h2, h3{
+    color: rgba(0, 0, 255, 0.952);
+}
+
+#secCompras{
+    background-color: antiquewhite;
+    height: 100%;
+    width: 100%;
+}
+
+form {
+    background-color: burlywood;
+    height: 100%;
+    width: 100%;
+}
+
+table {
+    background-color: darkkhaki;
+    text-decoration-color: blue;
+}
+
+li {
+    font-size: 25px;
+    font-weight: 2px;
+}
+
+.oculto{
+    display: none;
+}
