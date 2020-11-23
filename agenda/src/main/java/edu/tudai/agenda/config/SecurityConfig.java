@@ -21,7 +21,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/swagger-ui/**",
             "/webjars/**",
             // otros endpoints publicos
-            "/greetings"
+            "/greetings",
+            "/index.html"
     };
 
 	@Override
