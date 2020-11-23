@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +30,7 @@ public class LoginController {
 	}
 
 	// Servicio de login
+	@CrossOrigin
 	@PostMapping("user")
 	public UsuarioDTO login(@RequestParam("email") String email, @RequestParam("password") String pwd) {
 		// En el caso normal debería chequear que el usuario exista.

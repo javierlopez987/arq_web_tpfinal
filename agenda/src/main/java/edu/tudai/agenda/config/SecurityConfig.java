@@ -25,7 +25,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/index.html",
             "/*.html",
             "/css/**",
-            "/js/**"
+            "/js/**",
+            "/image/**"
     };
 
 	@Override

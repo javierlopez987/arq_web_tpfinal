@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +43,7 @@ public class ReporteController {
 		return repository.findByUserGteDate(id, Timestamp.valueOf(LocalDateTime.now()));
 	}
 	
+	@CrossOrigin
 	@ApiOperation(value = "Obtiene una lista de viajes realizados del usuario loggeado", response = Iterable.class, tags = "Reportes")
 	@GetMapping("viajes/realizados")
 	public Iterable<Viaje> getViajesRealizados() {
