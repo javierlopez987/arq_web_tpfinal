@@ -1,4 +1,4 @@
-package edu.tudai.agenda.service;
+package edu.tudai.agenda.controller;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.tudai.agenda.dto.UsuarioViajesDTO;
 import edu.tudai.agenda.model.Viaje;
 import edu.tudai.agenda.repository.ViajeRepository;
 import io.swagger.annotations.Api;
@@ -22,12 +23,12 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @RequestMapping("reportes")
 @Api(value = "Reportes", description = "REST SERVICE Reportes")
-public class ReporteService {
+public class ReporteController {
 
 	@Autowired
 	private final ViajeRepository repository;
 
-	public ReporteService(ViajeRepository repository) {
+	public ReporteController(ViajeRepository repository) {
 		this.repository = repository;
 	}
 	
@@ -69,4 +70,22 @@ public class ReporteService {
 	public Iterable<Viaje> getViajesRealizadosPorUsuario(@PathVariable Long id) {
 		return repository.findByUserLtDate(id, Timestamp.valueOf(LocalDateTime.now()));
 	}
+	
+	@ApiOperation(value = "Obtiene una lista de viajes entre determinadas fechas correspondientes al usuario loggeado", response = Iterable.class, tags = "Reportes")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Lista de viajes entre las fechas dadas"),
+			@ApiResponse(code = 401, message = "No autorizado para acceder al recurso"),
+			@ApiResponse(code = 403, message = "Recurso prohibido"),
+			@ApiResponse(code = 404, message = "No posee viajes agendados entre las fechas dadas")})
+	@GetMapping("viajes/inicio_busqueda/{lim_min}/fin_busqueda/{lim_max}")
+	public Iterable<Viaje> getViajesEntreDeterminadasFechas(@PathVariable Timestamp lim_min, @PathVariable Timestamp lim_max) {
+		Long id = Long.parseLong((String) SecurityContextHolder.getContext().getAuthentication().getDetails());
+		return repository.findByUserBtDates(id, lim_min, lim_max);
+	}
+	
+	@GetMapping("viajes/cantidad")
+	public Iterable<UsuarioViajesDTO> getCantViajesPorUsuario() {
+		return repository.selectCantViajesPorUsuario();
+	}
+	
 }
