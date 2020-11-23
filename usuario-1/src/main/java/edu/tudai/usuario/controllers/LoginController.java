@@ -1,8 +1,12 @@
 package edu.tudai.usuario.controllers;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.xml.bind.DatatypeConverter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,9 +23,10 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 @RestController
+@CrossOrigin
 public class LoginController {
 	
-	private final int ROL_ADMIN = 1;
+	private final int ROLE_ADMIN = 1;
 	@Autowired
 	private final UsuarioRepository repository;
 
@@ -30,7 +35,6 @@ public class LoginController {
 	}
 
 	// Servicio de login
-	@CrossOrigin
 	@PostMapping("user")
 	public UsuarioDTO login(@RequestParam("email") String email, @RequestParam("password") String pwd) {
 		// En el caso normal debería chequear que el usuario exista.
@@ -38,7 +42,7 @@ public class LoginController {
 		UsuarioDTO userInfo = null;
 		if(user != null) {
 			userInfo = new UsuarioDTO(user);
-			if(pwd.equals(user.getPassword())) {
+			if(checkPassword(pwd, user.getPassword())) {
 				String token = getJWTToken(user);				
 				userInfo.setToken(token);
 			}
@@ -47,12 +51,28 @@ public class LoginController {
 
 	}
 
+	private boolean checkPassword(String pwdExpected, String pwdStored) {
+		MessageDigest md;
+		String hash;
+		try {
+			md = MessageDigest.getInstance("MD5");
+			md.update(pwdExpected.getBytes());
+			byte[] digest = md.digest();
+			hash = DatatypeConverter
+				      .printHexBinary(digest).toUpperCase();
+			return pwdStored.equals(hash);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	// Genero el token.
 	private String getJWTToken(Usuario user) {
 		String secretKey = "mySecretKey";
 		String roles;
 		switch (user.getRol()) {
-		case 1:
+		case ROLE_ADMIN:
 			roles = "ROLE_ADMIN";
 			break;
 		default:

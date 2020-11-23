@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const URLBASE = "http://localhost:8080/";
     const URL = "http://localhost:8080/viajes/";
     const token = "http://localhost:8081/";//ver token formato
-    const USUARIOURI_1 = "http://localhost:8081/user?email=pmarmol@gmail.com&password=marmol";
+    const USUARIOURI_1 = "http://localhost:8081/user?email=pmarmol@gmail.com&password=1234";
     const USUARIOURI_2 = "http://localhost:8081/user?email=jn@doe&password=1234";
 
     let msjError = document.querySelector(".errorMsj");    msjError.setAttribute("display", "none");

@@ -13,7 +13,6 @@ import lombok.Data;
 @Data
 public class Usuario {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	@Column
 	private String nombre;
