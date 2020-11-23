@@ -1,4 +1,4 @@
-package edu.tudai.agenda.controller;
+package edu.tudai.agenda.service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -22,12 +22,12 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @RequestMapping("reportes")
 @Api(value = "Reportes", description = "REST SERVICE Reportes")
-public class ReporteController {
+public class ReporteService {
 
 	@Autowired
 	private final ViajeRepository repository;
 
-	public ReporteController(ViajeRepository repository) {
+	public ReporteService(ViajeRepository repository) {
 		this.repository = repository;
 	}
 	
