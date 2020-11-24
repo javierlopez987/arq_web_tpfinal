@@ -14,9 +14,9 @@ USE db_arq_web_tpfinal
 
 		db_insert
 		
-# para poder comprobar servicios crud de todas las tablas se creo una Branch "sin_token"
-# ya que en la que tiene el toquen no da los permisos necesarios para la comprobacion
+# para poder comprobar servicios crud de todas las tablas se creo una Branch "app_sintoken"
+# ya que en la que tiene el token no da los permisos necesarios para la comprobacion
 
 Los datos de usuario y pass estan preseteados para la prueba en el index
 
-Las consultas son sobre usuario... se pudo implementar en la web mostrar Viajes
+Las consultas son sobre usuari, se pudo implementar en la web los servicios mostrar Viajes Realizados y viajes Futuros
