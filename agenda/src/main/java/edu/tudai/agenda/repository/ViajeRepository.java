@@ -6,7 +6,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import edu.tudai.agenda.dto.UsuarioViajesDTO;
+import edu.tudai.agenda.dto.ViajesUsuarioDTO;
+import edu.tudai.agenda.dto.ViajesZonaDTO;
 import edu.tudai.agenda.model.Viaje;
 
 public interface ViajeRepository extends JpaRepository<Viaje, Long> {
@@ -33,8 +34,17 @@ public interface ViajeRepository extends JpaRepository<Viaje, Long> {
 	@Query("SELECT v FROM Viaje v where v.propietario = :id_usuario and v.inicio >= :lim_min and v.inicio <= :lim_max")
     public List<Viaje> findByUserBtDates(Long id_usuario, Timestamp lim_min, Timestamp lim_max);
 	
-	@Query("SELECT new edu.tudai.agenda.dto.UsuarioViajesDTO(v.propietario, COUNT(v.propietario) AS cant_viajes) "
+	@Query("SELECT new edu.tudai.agenda.dto.ViajesUsuarioDTO(v.propietario, COUNT(v.propietario) AS cant_viajes) "
 			+ "FROM Viaje v GROUP BY v.propietario ORDER BY cant_viajes DESC")
-	public List<UsuarioViajesDTO> selectCantViajesPorUsuario();
+	public List<ViajesUsuarioDTO> selectCantViajesPorUsuario();
+	
+	/**
+	 * Se considera cada viaje como una visita, un usuario puede viajar varias veces al mismo destino
+	 * por ello la cantidad total no se determina por cantidad de usuario sino por cantidad de viajes
+	 * @return
+	 */
+	@Query("SELECT new edu.tudai.agenda.dto.ViajesZonaDTO(v.destino, COUNT(v) AS cant_viajes) "
+			+ "FROM Viaje v GROUP BY v.destino ORDER BY cant_viajes DESC")
+	public List<ViajesZonaDTO> selectCantViajesPorZona();
 	
 }

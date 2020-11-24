@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.tudai.agenda.dto.UsuarioViajesDTO;
+import edu.tudai.agenda.dto.ViajesUsuarioDTO;
+import edu.tudai.agenda.dto.ViajesZonaDTO;
 import edu.tudai.agenda.model.Viaje;
 import edu.tudai.agenda.repository.ViajeRepository;
 import io.swagger.annotations.Api;
@@ -52,7 +53,7 @@ public class ReporteController {
 		return repository.findByUserLtDate(id, Timestamp.valueOf(LocalDateTime.now()));
 	}
 	
-	@ApiOperation(value = "ROLE_ADMIN Required - Obtiene una lista de viajes futuros de un determinado usuario", response = Iterable.class, tags = "Reportes")
+	@ApiOperation(value = "[Admin Required] Obtiene una lista de viajes futuros de un determinado usuario", response = Iterable.class, tags = "Reportes")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Lista de viajes futuros agendados"),
 			@ApiResponse(code = 401, message = "No autorizado para acceder al recurso"),
@@ -64,7 +65,7 @@ public class ReporteController {
 		return repository.findByUserGteDate(id, Timestamp.valueOf(LocalDateTime.now()));
 	}
 	
-	@ApiOperation(value = "ROLE_ADMIN Required - Obtiene una lista de viajes realizados de un determinado usuario", response = Iterable.class, tags = "Reportes")
+	@ApiOperation(value = "[Admin Required] Obtiene una lista de viajes realizados de un determinado usuario", response = Iterable.class, tags = "Reportes")
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@GetMapping("viajes/realizados/usuario/{id}")
 	public Iterable<Viaje> getViajesRealizadosPorUsuario(@PathVariable Long id) {
@@ -83,9 +84,18 @@ public class ReporteController {
 		return repository.findByUserBtDates(id, lim_min, lim_max);
 	}
 	
-	@GetMapping("viajes/cantidad")
-	public Iterable<UsuarioViajesDTO> getCantViajesPorUsuario() {
+	@ApiOperation(value = "[Admin Required] Obtiene un reporte de cantidad de viajes por usuario", response = Iterable.class, tags = "Reportes")
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+	@GetMapping("viajes/usuario")
+	public Iterable<ViajesUsuarioDTO> getCantViajesPorUsuario() {
 		return repository.selectCantViajesPorUsuario();
+	}
+	
+	@ApiOperation(value = "[Admin Required] Obtiene un reporte de cantidad de viajes por zona geografica", response = Iterable.class, tags = "Reportes")
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+	@GetMapping("viajes/zona")
+	public Iterable<ViajesZonaDTO> getCantViajesPorZona() {
+		return repository.selectCantViajesPorZona();
 	}
 	
 }

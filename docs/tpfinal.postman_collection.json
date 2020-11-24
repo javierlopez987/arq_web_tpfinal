@@ -1,0 +1,377 @@
+{
+	"info": {
+		"_postman_id": "973fa31d-2cca-4169-a8b6-d4c1017c0b4c",
+		"name": "tpfinal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Viajes Futuros de Usuario Loggeado",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxIiwic3ViIjoicG1hcm1vbEBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYwNTgyOTkzNywiZXhwIjoxNjA1ODMwNTM3fQ.0XsNwb7r-6btx6JOBYWUDRg97WBm-Le6di5b6543IHXVIGnthq-9pDxGWoOslM75gVej7LkoxkGf-D8DRw22Gw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/reportes/viajes/proximos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reportes",
+						"viajes",
+						"proximos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Viajes Realizados de Usuario Loggeado",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxIiwic3ViIjoicG1hcm1vbEBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYwNjE1Nzk0NiwiZXhwIjoxNjA2MTU4NTQ2fQ.XsGp0EUp__wY5ImhYQ6regZuAnWy08XHJZCzyxK2gNSPtWUNBLctmKv-sShAVQDe2dOFVee_mERLcotGHfYhKw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/reportes/viajes/realizados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reportes",
+						"viajes",
+						"realizados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alta Viaje",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": 4,\r\n\t\"nombre\": \"viaje a disney\",\r\n\t\"destino\": \"Orlando\",\r\n\t\"inicio\": \"2018-07-15T00:00:00\",\r\n\t\"fin\": \"2018-07-30T00:00:00\",\r\n\t\"descripcion\": \"Ninguna\",\r\n\t\"propietario\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/viajes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"viajes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificacion Viaje",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": 4,\r\n\t\"nombre\": \"Disneyland\",\r\n\t\"destino\": \"Orlando\",\r\n\t\"inicio\": \"2018-07-15T00:00:00\",\r\n\t\"fin\": \"2018-07-30T00:00:00\",\r\n\t\"descripcion\": \"Viaje a Disney con la familia\",\r\n\t\"propietario\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/viajes/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"viajes",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Baja Viaje",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/viajes/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"viajes",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alta Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": 5, \r\n\t\"nombre\": \"Betty\",\r\n\t\"apellido\": \"Marmol\",\r\n\t\"email\": \"bmarmol@gmail.com\",\r\n\t\"documento\": 4453127, \r\n\t\"password\": \"1234\", \r\n\t\"rol\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginUsuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/user?email=ppicapiedra@gmail.com&password=1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "ppicapiedra@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "1234"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginAdmin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/user?email=pmarmol@gmail.com&password=1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "pmarmol@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "1234"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Servicio sin LoginRequired",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/greetings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"greetings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Servicio con LoginRequired",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJhcnFfd2ViIiwic3ViIjoicG1hcm1vbEBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYwNTM5NDgzNywiZXhwIjoxNjA1Mzk1NDM3fQ.ptJF5wVWSK3Mjn0XqU22OenGrYOavTZLa5ISqlcP5u3wn81nc2PpMwD9C6aJXnErnpppFdQnuR-lElaMfr8F3w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/loginrequired",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"loginrequired"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Servicio Rol AdminRequired",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJhcnFfd2ViIiwic3ViIjoicG1hcm1vbEBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYwNTM5NDk2MSwiZXhwIjoxNjA1Mzk1NTYxfQ._i9GOQ2ibwMZSXDdNXv1-lXH30GNzEcBhE37m9bPrc9IbNvN9LQlR4ukzNHrewVih9GcDbFPhQyBU-CWF6hnww",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuarios[AdminRequired]",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIyIiwic3ViIjoicHBpY2FwaWVkcmFAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwNjE0NzQ4MiwiZXhwIjoxNjA2MTQ4MDgyfQ.V0pk20LECbJQ9Z_pMTY1bYDAymkwki_-80US9HpLtHiZ_vbt5ee3_i06wSFaSeOVYcHPD9-wlqUwQsC0r7cEpQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/usuarios/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"usuarios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cantidad de Viajes por Usuario [Admin]",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxIiwic3ViIjoicG1hcm1vbEBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYwNjE2ODEwOCwiZXhwIjoxNjA2MTY4NzA4fQ.a6Uy9Pzli1JDGHgJMIli5nR8ZsV2M4rbFCwq6DZLUYUE-_cCI54-bq7zDOLsrCsYhWjw8DactLB7HRipU3P_wg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/reportes/viajes/cantidad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reportes",
+						"viajes",
+						"cantidad"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cantidad de Viajes por Zona [Admin]",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxIiwic3ViIjoicG1hcm1vbEBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImlhdCI6MTYwNjE3NjI5MiwiZXhwIjoxNjA2MTc2ODkyfQ.0HPwmprDEEuOPE2gt1SIqbg56t3IGkm4bbIOfVyMqc1eCKRerdAEBuU3oim6kuveIO2sqTKjTIk4whEr-gNe8A",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/reportes/viajes/zona",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reportes",
+						"viajes",
+						"zona"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
